@@ -11,7 +11,7 @@ dotenv.config();
 export const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3002', 'http://localhost:5173']
+  origin: ['http://localhost:3002', 'http://localhost:5173, 'http://d1kdjdqjl0q1bl.cloudfront.net']
 };
 
 // middleware
