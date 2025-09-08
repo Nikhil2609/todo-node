@@ -14,7 +14,7 @@ echo "Install Dependencies"
 npm install
 
 
-DATABASE_URL=$(aws ssm get-parameter --name "/todo_app/$ENVIRONMENT/DATABASE_URL" --with-decryption --query "Parameter.Value" --output text)
+DATABASE_URL=$(aws ssm get-parameter --name "/todo-app/$ENVIRONMENT/DATABASE_URL" --with-decryption --query "Parameter.Value" --output text)
 export DATABASE_URL=$DATABASE_URL
 
 echo "Generate Prisma Client"
