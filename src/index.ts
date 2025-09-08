@@ -11,7 +11,7 @@ dotenv.config();
 export const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:3002', 'http://localhost:5173']
+  origin: ['http://localhost:3002', 'http://localhost:5173', 'http://d1kdjdqjl0q1bl.cloudfront.net']
 };
 
 // middleware
@@ -36,6 +36,8 @@ app.use('/', (req, res, next) => {
 // error handler
 app.use(errorHandler);
 
-app.listen(process.env.PORT, () => {
-  console.log('server running on port', process.env.PORT);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log('server running on port', PORT);
 });
