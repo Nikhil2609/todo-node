@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing dependencies...
+      - npm install
+  pre_build:
+    commands:
+      - echo Fetching environment variables from SSM Parameter Store...
+      - DATABASE_URL=$(aws ssm get-parameter --name "/todo_app/$ENVIRONMENT/DATABASE_URL" --region $AWS_DEFAULT_REGION --with-decryption --query "Parameter.Value" --output text)
+      - echo "DATABASE_URL = $DATABASE_URL"
+      - echo Running Prisma generate...
+      - npx prisma generate
+  build:
+    commands:
+      - echo Compiling TypeScript...
+      - npm run build
+  post_build:
+    commands:
+      - echo Preparing artifact for deployment...
+      - mkdir -p deploy
+      - cp -r dist package*.json appspec.yml scripts deploy/
+      - echo "Creating envfile with ENV=$ENV"
+      - echo "ENVIRONMENT=$ENVIRONMENT" > deploy/envfile
+artifacts:
+  files:
+    - 'deploy/**/*'

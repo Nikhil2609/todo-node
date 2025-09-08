@@ -20,6 +20,11 @@ app.use(cors(corsOptions)); // allow api access to valid FE URL only
 app.use(express.json()); // parse JSON
 app.use(requestLogger); // custom request logger
 
+//health route
+app.get('/health', (req, res) => {
+  res.status(200).json({ message: 'Server is running' });
+})
+
 // routes
 app.use('/api', router);
 
