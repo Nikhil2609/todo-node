@@ -6,5 +6,5 @@ cd /home/ec2-user/todo-app
 pm2 delete todo || true
 
 # start server
-pm2 start dist/src/index.js --name todo --watch
+pm2 start dist/index.js --name todo --watch
 pm2 save
