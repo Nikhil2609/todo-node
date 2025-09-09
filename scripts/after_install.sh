@@ -17,8 +17,5 @@ npm install
 DATABASE_URL=$(aws ssm get-parameter --name "/todo-app/$ENVIRONMENT/DATABASE_URL" --with-decryption --query "Parameter.Value" --output text)
 export DATABASE_URL=$DATABASE_URL
 
-echo "Generating Prisma client..."
-npx prisma generate
-
 echo "Generate Prisma Client"
-npx prisma migrate deploy
+npx prisma migrate deploy --schema=prisma/schema.prisma
