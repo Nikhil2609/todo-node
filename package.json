@@ -13,10 +13,6 @@
     "generate": "npx prisma generate",
     "seed": "npx prisma db seed"
   },
-  "prisma": {
-    "schema": "./prisma",
-    "seed": "ts-node prisma/seed.ts"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
