@@ -22,7 +22,7 @@ phases:
     commands:
       - echo Preparing artifact for deployment...
       - mkdir -p deploy
-      - cp -r dist package*.json appspec.yml scripts deploy/
+      - cp -r dist package*.json appspec.yml scripts prisma deploy/
       - echo "Creating envfile with ENV=$ENV"
       - echo "ENVIRONMENT=$ENVIRONMENT" > deploy/envfile
 artifacts:
