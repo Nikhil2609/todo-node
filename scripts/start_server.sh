@@ -2,8 +2,6 @@
 
 cd /home/ec2-user/todo-app
 
-npx prisma migrate deploy 
-
 # stop server
 pm2 delete todo || true
 
