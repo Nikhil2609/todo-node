@@ -9,8 +9,9 @@ phases:
       - npm install
   pre_build:
     commands:
+      - echo "CodeBuild ENV Variables => APPNAME=$APPNAME , ENVIRONMENT=$ENVIRONMENT"
       - echo Fetching environment variables from SSM Parameter Store...
-      - DATABASE_URL=$(aws ssm get-parameter --name "/todo-app/$ENVIRONMENT/DATABASE_URL" --region $AWS_DEFAULT_REGION --with-decryption --query "Parameter.Value" --output text)
+      - DATABASE_URL=$(aws ssm get-parameter --name "/$APPNAME/$ENVIRONMENT/DATABASE_URL" --region $AWS_DEFAULT_REGION --with-decryption --query "Parameter.Value" --output text)
       - echo "DATABASE_URL = $DATABASE_URL"
       - echo Running Prisma generate...
       - npx prisma generate
