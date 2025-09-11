@@ -1,5 +1,5 @@
 echo "after install script"
-cd /home/ec2-user/todo-app
+cd /home/ec2-user/project-api
 
 # Fetch Environment Variables
 # Load ENV variable from the artifact

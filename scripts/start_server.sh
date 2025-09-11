@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/ec2-user/todo-app
+cd /home/ec2-user/project-api
 
 # stop server
 pm2 delete todo || true
