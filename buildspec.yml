@@ -22,10 +22,10 @@ phases:
   post_build:
     commands:
       - echo Preparing artifact for deployment...
-      - mkdir -p deploy
-      - cp -r dist package*.json appspec.yml scripts prisma deploy/
       - echo "Creating envfile with ENVIRONMENT=$ENVIRONMENT"
-      - echo "ENVIRONMENT=$ENVIRONMENT" > deploy/envfile
+      - echo "DATABASE_URL=$DATABASE_URL" > .env
+      - mkdir -p deploy
+      - cp -r dist package*.json appspec.yml scripts prisma .env deploy/
 artifacts:
   files:
     - 'deploy/**/*'
