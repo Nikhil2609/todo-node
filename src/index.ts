@@ -26,12 +26,17 @@ const io = new Server(server, {
 });
 io.on('connection', (socket) => {
   console.log('a user connected on ', socket.id);
+
+  // Listen when frontend emits
   socket.on('updateTask', () => { // on : listen event emit from client
     console.log('BE: updateTask listen');
 
+    // Broadcast to all connected clients
     io.emit('updateBoard');  // emit : send this event to client and then client update board in all browser window
     console.log('BE: updateBoard emit');
   });
+
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
